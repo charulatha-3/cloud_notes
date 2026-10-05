@@ -1,0 +1,970 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Study Material Hub</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #1e293b;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 245px;
+    height: 100vh;
+    background: #172554;
+    color: white;
+    padding: 25px 18px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo span {
+    color: #60a5fa;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    margin: 8px 0;
+}
+
+.menu button {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: #cbd5e1;
+    text-align: left;
+    padding: 13px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.menu button:hover,
+.menu button.active {
+    background: #2563eb;
+    color: white;
+}
+
+/* MAIN */
+
+.main {
+    margin-left: 245px;
+    padding: 30px;
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 27px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 30px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    background: #2563eb;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* SEARCH */
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 14px 18px;
+    border: none;
+    background: white;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.search-box button {
+    padding: 0 25px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+/* STATS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.stat-card .icon {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.stat-card h2 {
+    font-size: 25px;
+}
+
+.stat-card p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* SECTION */
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.section-title h2 {
+    font-size: 21px;
+}
+
+.section-title button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* SUBJECTS */
+
+.subjects {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.subject {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.subject:hover {
+    transform: translateY(-4px);
+}
+
+.subject-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.subject h3 {
+    font-size: 16px;
+}
+
+.subject p {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 5px;
+}
+
+/* MATERIALS */
+
+.materials {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.material {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.material:last-child {
+    border-bottom: none;
+}
+
+.material-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.file-icon {
+    width: 45px;
+    height: 45px;
+    background: #eff6ff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+}
+
+.material h3 {
+    font-size: 14px;
+}
+
+.material p {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 3px;
+}
+
+.material-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.material-actions button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.download {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.delete {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal-box {
+    width: 430px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.modal-box h2 {
+    margin-bottom: 20px;
+}
+
+.modal-box input,
+.modal-box select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cancel {
+    background: #e2e8f0;
+}
+
+.upload {
+    background: #2563eb;
+    color: white;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 1000px) {
+
+    .stats,
+    .subjects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .main {
+        margin-left: 190px;
+    }
+}
+
+@media(max-width: 700px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .stats,
+    .subjects {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        gap: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        ☁️ Cloud<span>Hub</span>
+    </div>
+
+    <ul class="menu">
+
+        <li>
+            <button class="active" onclick="showDashboard()">
+                🏠 Dashboard
+            </button>
+        </li>
+
+        <li>
+            <button onclick="filterSubject('Computer Networks')">
+                🌐 Computer Networks
+            </button>
+        </li>
+
+        <li>
+            <button onclick="filterSubject('DBMS')">
+                🗄️ DBMS
+            </button>
+        </li>
+
+        <li>
+            <button onclick="filterSubject('Java')">
+                ☕ Java
+            </button>
+        </li>
+
+        <li>
+            <button onclick="filterSubject('Web Technology')">
+                🌎 Web Technology
+            </button>
+        </li>
+
+        <li>
+            <button onclick="openUpload()">
+                📤 Upload Material
+            </button>
+        </li>
+
+    </ul>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <div class="header">
+
+        <div>
+            <h1>Cloud Study Material Hub</h1>
+            <p style="color:#64748b;font-size:13px;">
+                Your academic resources, available anywhere ☁️
+            </p>
+        </div>
+
+        <div class="profile">
+            <div class="avatar">C</div>
+            <span>Charu</span>
+        </div>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search notes, subjects, question papers..."
+            onkeyup="searchMaterials()"
+        >
+
+        <button onclick="searchMaterials()">
+            🔍 Search
+        </button>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <div class="icon">📚</div>
+            <h2 id="totalFiles">0</h2>
+            <p>Total Materials</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon">📥</div>
+            <h2 id="totalDownloads">0</h2>
+            <p>Total Downloads</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon">📂</div>
+            <h2>4</h2>
+            <p>Subjects</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon">☁️</div>
+            <h2>75%</h2>
+            <p>Cloud Storage</p>
+        </div>
+
+    </div>
+
+
+    <!-- SUBJECTS -->
+
+    <div class="section-title">
+
+        <h2>Browse Subjects</h2>
+
+    </div>
+
+    <div class="subjects">
+
+        <div class="subject" onclick="filterSubject('Computer Networks')">
+            <div class="subject-icon">🌐</div>
+            <h3>Computer Networks</h3>
+            <p>Notes & Question Papers</p>
+        </div>
+
+        <div class="subject" onclick="filterSubject('DBMS')">
+            <div class="subject-icon">🗄️</div>
+            <h3>DBMS</h3>
+            <p>Notes & Assignments</p>
+        </div>
+
+        <div class="subject" onclick="filterSubject('Java')">
+            <div class="subject-icon">☕</div>
+            <h3>Java</h3>
+            <p>Programs & Notes</p>
+        </div>
+
+        <div class="subject" onclick="filterSubject('Web Technology')">
+            <div class="subject-icon">🌎</div>
+            <h3>Web Technology</h3>
+            <p>HTML, CSS & JS</p>
+        </div>
+
+    </div>
+
+
+    <!-- MATERIALS -->
+
+    <div class="section-title">
+
+        <h2>Recent Study Materials</h2>
+
+        <button onclick="openUpload()">
+            + Upload Material
+        </button>
+
+    </div>
+
+
+    <div class="materials" id="materialsList"></div>
+
+</main>
+
+
+<!-- UPLOAD MODAL -->
+
+<div class="modal" id="uploadModal">
+
+    <div class="modal-box">
+
+        <h2>📤 Upload Study Material</h2>
+
+        <input
+            type="text"
+            id="materialName"
+            placeholder="Material name"
+        >
+
+        <select id="materialSubject">
+
+            <option value="">Select Subject</option>
+            <option>Computer Networks</option>
+            <option>DBMS</option>
+            <option>Java</option>
+            <option>Web Technology</option>
+
+        </select>
+
+        <input
+            type="file"
+            id="materialFile"
+        >
+
+        <div class="modal-buttons">
+
+            <button class="cancel" onclick="closeUpload()">
+                Cancel
+            </button>
+
+            <button class="upload" onclick="uploadMaterial()">
+                Upload
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let materials = JSON.parse(localStorage.getItem("studyMaterials")) || [
+
+    {
+        name: "Computer Networks Unit 1 Notes",
+        subject: "Computer Networks",
+        type: "PDF",
+        size: "2.4 MB",
+        downloads: 12
+    },
+
+    {
+        name: "DBMS Important Questions",
+        subject: "DBMS",
+        type: "PDF",
+        size: "1.8 MB",
+        downloads: 8
+    },
+
+    {
+        name: "Java Programming Notes",
+        subject: "Java",
+        type: "PDF",
+        size: "3.1 MB",
+        downloads: 15
+    },
+
+    {
+        name: "Web Technology Question Paper",
+        subject: "Web Technology",
+        type: "PDF",
+        size: "1.2 MB",
+        downloads: 7
+    }
+
+];
+
+let totalDownloads = Number(localStorage.getItem("downloads")) || 42;
+
+
+/* DISPLAY MATERIALS */
+
+function displayMaterials(list = materials) {
+
+    const container = document.getElementById("materialsList");
+
+    container.innerHTML = "";
+
+    if (list.length === 0) {
+
+        container.innerHTML = `
+            <div style="text-align:center;padding:35px;color:#64748b;">
+                No study materials found 🔍
+            </div>
+        `;
+
+        updateStats();
+
+        return;
+    }
+
+    list.forEach((material, index) => {
+
+        container.innerHTML += `
+
+            <div class="material">
+
+                <div class="material-left">
+
+                    <div class="file-icon">
+                        📄
+                    </div>
+
+                    <div>
+
+                        <h3>${material.name}</h3>
+
+                        <p>
+                            ${material.subject}
+                            • ${material.type}
+                            • ${material.size}
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="material-actions">
+
+                    <button
+                        class="download"
+                        onclick="downloadMaterial(${index})">
+                        ⬇️ Download
+                    </button>
+
+                    <button
+                        class="delete"
+                        onclick="deleteMaterial(${index})">
+                        🗑️
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+    updateStats();
+
+}
+
+
+/* SEARCH */
+
+function searchMaterials() {
+
+    const value =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const filtered = materials.filter(material =>
+
+        material.name.toLowerCase().includes(value) ||
+
+        material.subject.toLowerCase().includes(value)
+
+    );
+
+    displayMaterials(filtered);
+
+}
+
+
+/* SUBJECT FILTER */
+
+function filterSubject(subject) {
+
+    document.getElementById("searchInput").value = subject;
+
+    const filtered = materials.filter(material =>
+        material.subject === subject
+    );
+
+    displayMaterials(filtered);
+
+}
+
+
+/* DASHBOARD */
+
+function showDashboard() {
+
+    document.getElementById("searchInput").value = "";
+
+    displayMaterials(materials);
+
+}
+
+
+/* UPLOAD MODAL */
+
+function openUpload() {
+
+    document.getElementById("uploadModal").style.display = "flex";
+
+}
+
+
+function closeUpload() {
+
+    document.getElementById("uploadModal").style.display = "none";
+
+}
+
+
+/* UPLOAD */
+
+function uploadMaterial() {
+
+    const name =
+        document.getElementById("materialName").value.trim();
+
+    const subject =
+        document.getElementById("materialSubject").value;
+
+    const file =
+        document.getElementById("materialFile").files[0];
+
+
+    if (!name || !subject || !file) {
+
+        alert("Please fill all fields.");
+
+        return;
+
+    }
+
+
+    const newMaterial = {
+
+        name: name,
+
+        subject: subject,
+
+        type: file.name.split(".").pop().toUpperCase(),
+
+        size: (file.size / 1024 / 1024).toFixed(2) + " MB",
+
+        downloads: 0
+
+    };
+
+
+    materials.unshift(newMaterial);
+
+
+    localStorage.setItem(
+        "studyMaterials",
+        JSON.stringify(materials)
+    );
+
+
+    document.getElementById("materialName").value = "";
+
+    document.getElementById("materialSubject").value = "";
+
+    document.getElementById("materialFile").value = "";
+
+
+    closeUpload();
+
+    displayMaterials();
+
+    alert("Study material uploaded successfully! ☁️");
+
+}
+
+
+/* DOWNLOAD */
+
+function downloadMaterial(index) {
+
+    const material = materials[index];
+
+    material.downloads++;
+
+    totalDownloads++;
+
+
+    localStorage.setItem(
+        "downloads",
+        totalDownloads
+    );
+
+
+    localStorage.setItem(
+        "studyMaterials",
+        JSON.stringify(materials)
+    );
+
+
+    const content =
+`Cloud Study Material Hub
+
+Material: ${material.name}
+Subject: ${material.subject}
+Type: ${material.type}
+
+This is a demo cloud study material file.
+`;
+
+
+    const blob =
+        new Blob([content], {type:"text/plain"});
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const a =
+        document.createElement("a");
+
+    a.href = url;
+
+    a.download =
+        material.name.replaceAll(" ", "_") + ".txt";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+    displayMaterials();
+
+}
+
+
+/* DELETE */
+
+function deleteMaterial(index) {
+
+    const confirmDelete =
+        confirm("Delete this study material?");
+
+    if (!confirmDelete) return;
+
+
+    materials.splice(index, 1);
+
+
+    localStorage.setItem(
+        "studyMaterials",
+        JSON.stringify(materials)
+    );
+
+
+    displayMaterials();
+
+}
+
+
+/* UPDATE STATS */
+
+function updateStats() {
+
+    document.getElementById("totalFiles").textContent =
+        materials.length;
+
+    document.getElementById("totalDownloads").textContent =
+        totalDownloads;
+
+}
+
+
+/* INITIAL LOAD */
+
+displayMaterials();
+
+</script>
+
+</body>
+</html>
+```
